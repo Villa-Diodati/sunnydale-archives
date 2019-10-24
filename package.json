@@ -1,0 +1,23 @@
+{
+  "name": "sunnydale-index",
+  "version": "1.0.0",
+  "description": "A api for D&D",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Villa-Diodati/sunnydale-index.git"
+  },
+  "author": "t",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Villa-Diodati/sunnydale-index/issues"
+  },
+  "homepage": "https://github.com/Villa-Diodati/sunnydale-index#readme",
+  "dependencies": {
+    "fastify": "^2.10.0"
+  }
+}
