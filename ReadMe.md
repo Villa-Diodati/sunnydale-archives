@@ -3,18 +3,19 @@ An API for D&D characters, monsters, and items.  The vision for this project is 
 
 ## Effect Types
 * Typically class / leveling effects
-  * Add or remove proficiency
-  * Boost or reduce an attribute score
-  * Boost or reduce a skill score
-  * Boost or reduce profiency bonus
-  * Add or remove advantage
-  * Add or remove a spell
-  * Add or remove a spell slot
+  * Add or remove (proficiency)
+  * Boost or reduce an (attribute) score
+  * Boost or reduce a (skill) score
+  * Boost or reduce profiency bonus (probo)
+  * Add or remove (advantage)
+  * Add or remove a (spell)
+  * Add or remove a spell (slot)
 * Typically combat / play effects
-  * Add or remove an item from inventory
-  * Add or remove an attack type
-  * Damage or heal a target
-  * Charge or deplete a spell slot
+  * Add or remove an item from (inventory)
+  * Add or remove an (attack) type
+  * Damage or heal a target (hp)
+  * Charge or deplete a spell slot (ss)
+* (Misc)ellaneous (other)
 
 ## Effect Structure
 ``` js
@@ -23,13 +24,14 @@ An API for D&D characters, monsters, and items.  The vision for this project is 
   target: '',
   modifier: '',
   source: '',
+  relevance: [],
 }
 ```
 
 For instance, let's say an effect changes my dexterity score:
 ``` js
 {
-  type: 'Boost or reduce an attribute score',
+  type: 'attribute',
   target: 'dexterity',
   modifier: () => '+ 1',
   source: 'Lucky Ring',
@@ -51,14 +53,19 @@ Nouns should have fairly simple structures, with names, types, and effects attac
 ``` js
 {
   name: 'Lucky Ring',
-  effects: [{}],
   type: 'Equipment',
+  effects: [{}],
 }
 ```
 
+## Spelling and capitalization convention
+All words should be completely spelled out and in all lowercase.
+
 ## Stack
-* Mongo
-* Mongoose
-* Node
-* Fastify
-* 
+* Backend / API
+  * Mongo
+  * Mongoose
+  * Node
+  * Fastify
+* Frontend
+  * TBD
