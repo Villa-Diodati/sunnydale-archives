@@ -6,6 +6,8 @@ const itemSchema = mongoose.Schema({
   name: { type: String, required: true, unique: true, },
   type: { type: String, required: true },
   effects: [effectSchema],
+  description: String,
+  notes: String,
 });
 
 module.exports = mongoose.model('Item', itemSchema);

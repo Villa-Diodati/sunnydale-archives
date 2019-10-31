@@ -4,14 +4,17 @@ An API for D&D characters, monsters, and items.  The vision for this project is 
 ## Effect Types
 * Typically class / leveling effects
   * Add or remove (proficiency)
+  * Boost or reduce max (health)
   * Boost or reduce an (attribute) score
   * Boost or reduce a (skill) score
   * Boost or reduce profiency bonus (probo)
   * Add or remove (advantage)
   * Add or remove a (spell)
   * Add or remove a spell (slot)
+  * Add or remove an (ability)
 * Typically combat / play effects
   * Add or remove an item from (inventory)
+  * Boost or reduce (armor) class
   * Add or remove an (attack) type
   * Damage or heal a target (hp)
   * Charge or deplete a spell slot (ss)
@@ -35,6 +38,8 @@ For instance, let's say an effect changes my dexterity score:
   target: 'dexterity',
   modifier: () => '+ 1',
   source: 'Lucky Ring',
+  description: '',
+  notes: '',
 }
 ```
 
@@ -58,8 +63,120 @@ Nouns should have fairly simple structures, with names, types, and effects attac
 }
 ```
 
-## Spelling and capitalization convention
-All words should be completely spelled out and in all lowercase.
+## Noun types
+* Items
+* Spells
+* Classes
+* Monsters
+* Characters
+* Other
+
+## Example: the Fighter Class
+``` js
+{
+  name: 'Fighter',
+  levels: [
+    {
+      levelNumber: 1,
+      class: 'Fighter,
+      effects: [
+        {
+          type: 'health',
+          modifier: (health) => health + 10,
+          source: 'Fighter Level 1',
+        },
+        {
+          type: 'proficiency',
+          target: {
+            selection: [
+              'all armor',
+              'shields',
+              'simple weapons',
+              'martial weapons',
+              'strength saves',
+              'constitution',
+            ],
+            all: true,
+          }
+          modifier: (proficiencies) => [...proficiencies, ...this.target.selection ],
+          source: 'Fighter Level 1',
+        },
+        {
+          type: 'proficiency',
+          target: {
+            options: [
+              'acrobatics', 'animal handling', 'athletics',
+              'history', 'insight', 'intimidation',
+              'perception', 'survival',
+
+            ],
+            selection: [],
+            count: 2,
+          }
+          modifier: (selection) => this.proficiencies.push(selection),
+          source: 'Fighter Level 1',
+        },
+        {
+          type: 'ability',
+          target: {
+            options: [
+              'Archery Fighting Style',
+              'Defense Fighting Style',
+              'Dueling Fighting Style',
+              'Great Weapon Fighting Style',
+              'Protection Fighting Style',
+              'Two-Weapon Fighting Style',
+            ],
+            selection: [],
+            count: 1,
+          },
+        },
+        {
+          type: 'ability',
+          target: 'Second wind',
+        },
+      ]
+    },
+    {
+      levelNumber: 2,
+      class: 'Fighter,
+      effects: [
+        {
+          type: 'health',
+          modifier: (health) => health + 8,
+          source: 'Fighter Level 2',
+          valueDie: 8,
+        },
+        {
+          type: 'ability',
+          modifier: () => { this.abilities.push('second wind') },
+          source: 'Fighter Level 2',
+        },
+      ],
+    },
+    {
+      levelNumber: 3,
+      class: 'Fighter,
+      effects: [
+        {
+          type: 'class',
+          target: {
+            options: [
+              'Champion',
+              'Battle Master',
+              'Eldrich Knight',
+            ],
+            selection: [],
+            count: 1,
+          }
+          modifier: (selection) => this.classes.push(selection),
+          source: 'Fighter Level 3',
+        },
+      ],
+    },
+  ]
+}
+```
 
 ## Stack
 * Backend / API

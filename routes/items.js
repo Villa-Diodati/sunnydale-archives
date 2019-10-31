@@ -11,7 +11,7 @@ const routes = async(fastify, options) => {
     const { item } = request.body;
 
     reply
-      .code(200)
+      .code(201)
       .send({ message: 'success', item });
   });
 }

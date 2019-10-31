@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const effectTypes = [
   'proficiency', 'attribute', 'skill', 'probo',
   'advantage', 'spell', 'slot', 'inventory',
-  'attack', 'hp', 'ss', 'other',
+  'attack', 'hp', 'charge', 'other',
+  'ability', 'effect', 'class',
 ];
 
 const effectSchema = mongoose.Schema({
@@ -12,7 +13,7 @@ const effectSchema = mongoose.Schema({
     required: true,
     enum: effectTypes,
   },
-  target: { type: String, required: true },
+  target: {},
   modifier: { type: Function, required: true },
   source: { type: String, required: true },
   relevance: {
@@ -20,6 +21,8 @@ const effectSchema = mongoose.Schema({
     required: true,
     enum: ['combat', 'magic', 'roleplay', 'other', 'all']
   },
+  description: String,
+  notes: String,
 });
 
 module.exports = effectSchema;
