@@ -139,7 +139,7 @@ Nouns should have fairly simple structures, with names, types, and effects attac
     },
     {
       levelNumber: 2,
-      class: 'Fighter,
+      class: 'Fighter',
       effects: [
         {
           type: 'health',
@@ -156,8 +156,14 @@ Nouns should have fairly simple structures, with names, types, and effects attac
     },
     {
       levelNumber: 3,
-      class: 'Fighter,
+      class: 'Fighter',
       effects: [
+        {
+          type: 'health',
+          modifier: (health) => health + 8,
+          source: 'Fighter Level 3',
+          valueDie: 8,
+        },
         {
           type: 'class',
           target: {
@@ -171,6 +177,18 @@ Nouns should have fairly simple structures, with names, types, and effects attac
           }
           modifier: (selection) => this.classes.push(selection),
           source: 'Fighter Level 3',
+        },
+      ],
+    },
+    {
+      levelNumber: 4,
+      class: 'Fighter',
+      effects: [
+           {
+          type: 'health',
+          modifier: (health) => health + 8,
+          source: 'Fighter Level 4',
+          valueDie: 8,
         },
       ],
     },
