@@ -71,7 +71,24 @@ Nouns should have fairly simple structures, with names, types, and effects attac
 * Characters
 * Other
 
-## Example: the Fighter Class
+## Examples
+### Ring of Invisibility
+```js
+{
+  name: 'Ring of Invisibility',
+  type: 'equipment',
+  effects: [
+    {
+      type: 'Other',
+      source: 'Ring of Inivisibility',
+      relevance: ['all'],
+      description: 'Once per day, the user can become invisibile for up to one hour, the effect is broken if the user gives or takes damage',
+    }
+  ],
+  description: 'A silver band with an opal that grants the wearer invisibility, for a short period',
+}
+```
+### The Fighter Class
 ``` js
 {
   name: 'Fighter',

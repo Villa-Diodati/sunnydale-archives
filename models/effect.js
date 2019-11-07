@@ -23,6 +23,8 @@ const effectSchema = mongoose.Schema({
   },
   description: String,
   notes: String,
+  targetDie: Function,
+  valueDie: Function,
 });
 
 module.exports = effectSchema;

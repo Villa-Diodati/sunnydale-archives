@@ -1,4 +1,4 @@
-const Item = require('../models/item');
+const Class = require('../models/class');
 
 const routes = async(fastify, options) => {
   fastify.get('/', options, async(request, reply) => {
@@ -8,14 +8,14 @@ const routes = async(fastify, options) => {
   });
 
   fastify.post('/', options, async(request, reply) => {
-    const { item } = request.body;
-    const newItem = Item.create(item);
+    const { class } = request.body;
+    const newClass = Class.create(item);
   
     try {
-      await newItem.save(item)
-        reply
-          .code(201)
-          .send({ message: 'success', newItem });
+      await newClass.save(item)
+      reply
+        .code(201)
+        .send({ message: 'success', newItem });
     } catch (err) {
       reply
         .code(422)
