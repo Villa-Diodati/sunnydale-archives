@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Villa-Diodati/sunnydale-index#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "fastify": "^2.10.0",
+    "fastify": "^2.15.1",
     "mongoose": "^5.7.7",
     "nodemon": "^1.19.4"
   }
